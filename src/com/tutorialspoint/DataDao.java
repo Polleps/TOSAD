@@ -10,16 +10,49 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.sql.*;
+
+
 public class DataDao {
+	//static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+	static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver"; 
+	//static final String DB_URL = "jdbc:mysql://localhost/EMP";	
+	static final String DB_URL = "jdbc:oracle:thin:@ondora02.hu.nl:8521/cursus02.hu.nl";
+	
+	static final String USER = "TESTDB";
+	static final String PASS = "TOSAD_2016_2D_TEAM6";
+	
+	public static void connectToDb(String password){
+		Connection conn = null;
+		//PASS = password;
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+			//Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("Connecting to database...");
+			System.out.println("username: " + USER);
+			System.out.println("password: " + password);
+		    conn = DriverManager.getConnection(DB_URL,USER,password);
+		    System.out.println("Connected");
+		}catch(SQLException se){
+	      //Handle errors for JDBC
+			se.printStackTrace();
+	    }catch(Exception e){
+	      //Handle errors for Class.forName
+	      e.printStackTrace();
+	}
+	}
+	
    public List<Data> getAllUsers(){
       List<Data> dataList = null;
       try {
          File file = new File("Users.dat");
          if (!file.exists()) {
             Data data = new Data(1, "get", "data");
+            Data te = new Data(2, "set", "data");
             dataList = new ArrayList<Data>();
             dataList.add(data);
-            saveUserList(dataList);		
+            dataList.add(te);
+            saveUserList(dataList);
          }
          else{
             FileInputStream fis = new FileInputStream(file);
