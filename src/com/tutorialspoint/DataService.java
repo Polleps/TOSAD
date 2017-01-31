@@ -44,7 +44,7 @@ public class DataService {
    @Produces(MediaType.APPLICATION_XML)
     public void connectToDb(@PathParam("passwd") String passwd){
 	   //dataDao.connectToDb(passwd);
-	   targetDb.connect();
+	   targetDb.connect(passwd);
    }
 
    @PUT

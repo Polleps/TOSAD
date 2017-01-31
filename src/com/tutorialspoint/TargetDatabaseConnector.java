@@ -12,7 +12,7 @@ public class TargetDatabaseConnector {
 	public TargetDatabaseConnector() {
 	}
 	
-	public void connect(){
+	public void connect(String password){
 		Connection conn = null;
 		Statement stmt = null;
 		String sql = null;
@@ -22,7 +22,9 @@ public class TargetDatabaseConnector {
 
 			// STEP 3: Open a connection
 			System.out.println("Connecting to database...");
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			conn = DriverManager.getConnection(DB_URL, USER, password);
+			System.out.println("username: " + USER);
+			System.out.println("password: " + password);
 
 			// STEP 4: Execute a query
 			System.out.println("Creating statement...");
