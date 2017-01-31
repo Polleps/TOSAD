@@ -20,7 +20,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/DataService")
 public class DataService {
 	
-   DataDao userDao = new DataDao();
+   DataDao dataDao = new DataDao();
+   TargetDatabaseConnector targetDb = new TargetDatabaseConnector();
    private static final String SUCCESS_RESULT="<result>success</result>";
    private static final String FAILURE_RESULT="<result>failure</result>";
 
@@ -29,14 +30,21 @@ public class DataService {
    @Path("/data")
    @Produces(MediaType.APPLICATION_XML)
    public List<Data> getUsers(){
-      return userDao.getAllUsers();
+      return dataDao.getAllUsers();
    }
 
    @GET
    @Path("/data/{userid}")
    @Produces(MediaType.APPLICATION_XML)
    public Data getUser(@PathParam("userid") int userid){
-      return userDao.getUser(userid);
+      return dataDao.getUser(userid);
+   }
+   @GET
+   @Path("/data/connection/{passwd}")
+   @Produces(MediaType.APPLICATION_XML)
+    public void connectToDb(@PathParam("passwd") String passwd){
+	   //dataDao.connectToDb(passwd);
+	   targetDb.connect();
    }
 
    @PUT
@@ -51,7 +59,7 @@ public class DataService {
       @FormParam("profession") String profession,
       @Context HttpServletResponse servletResponse) throws IOException{
       Data user = new Data(id, command, profession);
-      int result = userDao.addUser(user);
+      int result = dataDao.addUser(user);
       if(result == 1){
          return SUCCESS_RESULT;
       }
@@ -65,10 +73,11 @@ public class DataService {
    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
    public String updateUser(@FormParam("id") int id,
       @FormParam("command") String command,
-      @FormParam("profession") String profession,
+      //@FormParam("profession") String profession,
       @Context HttpServletResponse servletResponse) throws IOException{
-      Data user = new Data(id, command, profession);
-      int result = userDao.updateUser(user);
+      //Data user = new Data(id, command, profession);
+	   Data user = new Data(id, command, "test");
+      int result = dataDao.updateUser(user);
       if(result == 1){
          return SUCCESS_RESULT;
       }
@@ -79,7 +88,7 @@ public class DataService {
    @Path("/data/{userid}")
    @Produces(MediaType.APPLICATION_XML)
    public String deleteUser(@PathParam("userid") int userid){
-      int result = userDao.deleteUser(userid);
+      int result = dataDao.deleteUser(userid);
       if(result == 1){
          return SUCCESS_RESULT;
       }
