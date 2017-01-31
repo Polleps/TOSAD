@@ -28,7 +28,7 @@ public class DataDao {
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver"); 
 			//Class.forName("com.mysql.jdbc.Driver");
-			System.out.println("Connecting to database...");
+			System.out.println("Connecting to tool database...");
 			System.out.println("username: " + USER);
 			System.out.println("password: " + password);
 		    conn = DriverManager.getConnection(DB_URL,USER,password);

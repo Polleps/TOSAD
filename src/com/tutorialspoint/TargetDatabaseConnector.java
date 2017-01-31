@@ -21,7 +21,7 @@ public class TargetDatabaseConnector {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			// STEP 3: Open a connection
-			System.out.println("Connecting to database...");
+			System.out.println("Connecting to target database...");
 			conn = DriverManager.getConnection(DB_URL, USER, password);
 			System.out.println("username: " + USER);
 			System.out.println("password: " + password);

@@ -40,10 +40,16 @@ public class DataService {
       return dataDao.getUser(userid);
    }
    @GET
-   @Path("/data/connection/{passwd}")
+   @Path("/data/tool/{passwd}")
    @Produces(MediaType.APPLICATION_XML)
     public void connectToDb(@PathParam("passwd") String passwd){
-	   //dataDao.connectToDb(passwd);
+	   dataDao.connectToDb(passwd);
+	   //targetDb.connect(passwd);
+   }
+   @GET
+   @Path("/data/target/{passwd}")
+   @Produces(MediaType.APPLICATION_XML)
+    public void connectTarget(@PathParam("passwd") String passwd){
 	   targetDb.connect(passwd);
    }
 
