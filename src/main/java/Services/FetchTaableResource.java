@@ -60,7 +60,7 @@ public class FetchTaableResource {
         Controller.printToConsole("Password: " + pwd);
         Connection conn = null;
         Statement stmt = null;
-
+        String sql = null;
 
         ArrayList<String> listofTable = new ArrayList<String>();
 
@@ -83,6 +83,32 @@ public class FetchTaableResource {
             }
 
             rs.close();
+
+            stmt = conn.createStatement();
+
+            // sql = "SELECT * from customer";
+            for (int i = 0; i < listofTable.size(); i++) {
+                
+
+                sql = "SELECT column_name FROM all_tab_cols WHERE table_name ='" + listofTable.get(i) + "'";
+
+                ResultSet rs1 = stmt.executeQuery(sql);
+
+                // STEP 5: Extract data from result set
+                while (rs1.next()) {
+                    // Retrieve by column name
+                    // DataList.add(rs.getString("NAME"));
+                    System.out.println(rs1.getString("column_name"));
+
+
+
+
+                    // DataList.add(rs.getString("IDTARGETDB"));
+                }
+            }
+            // STEP 6: Clean-up environment
+            stmt.close();
+
             conn.close();
 
         } catch (SQLException se) {
