@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import Domain.Attribute;
 import Domain.Controller;
 import Domain.RequestData;
+import Domain.Value;
 import com.google.gson.Gson;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Polle on 31-1-2017.
+ * Created by Pawel on 31-1-2017.
  */
 @Path("/generator")
 public class GeneratorResource {
@@ -54,34 +55,20 @@ public class GeneratorResource {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             stmt = conn.createStatement();
-            sql = "SELECT " + "R.NAME RULE_NAME, " + "RT.NAME RULETYPE, " + "A1.TABEL TABLE_1, "
-                    + "A1.COLUMN_NAME COLUMN_NAME, " + "O.NAME OPERATOR, "
-                    + "(SELECT TABEL FROM ATTRIBUTE A2 WHERE POS = 2 AND A2.IDRULE = R.IDRULE) TABLE_2, "
-                    + "(SELECT COLUMN_NAME FROM ATTRIBUTE A2 WHERE POS = 2 AND A2.IDRULE = R.IDRULE) OPERAND1_ATTRIBUTE, "
-                    + "(SELECT VAL FROM VAL V2 WHERE POS = 2 AND V2.IDRULE = R.IDRULE) OPERAND2_VALUE , "
-                    + "(SELECT VAL FROM VAL V3 WHERE POS = 3 AND V3.IDRULE = R.IDRULE) OPERAND3_VALUE " + "FROM RULE R "
-                    + "LEFT JOIN RULETYPE RT " + "ON R.IDRULETYPE = RT.IDRULETYPE " + "LEFT JOIN ATTRIBUTE A1 "
-                    + "ON A1.IDRULE = R.IDRULE " + "LEFT JOIN OPERATOR O " + "ON R.IDOPERATOR = O.IDOPERATOR "
-                    + "WHERE IDTARGETDB = " + DB_ID + " AND A1.POS = 1";
+            sql = new StringBuilder().append("SELECT ").append("R.NAME RULE_NAME, ").append("RT.NAME RULETYPE, ").append("A1.TABEL TABLE_1, ").append("A1.COLUMN_NAME COLUMN_NAME, ").append("O.NAME OPERATOR, ").append("(SELECT TABEL FROM ATTRIBUTE A2 WHERE POS = 2 AND A2.IDRULE = R.IDRULE) TABLE_2, ").append("(SELECT COLUMN_NAME FROM ATTRIBUTE A2 WHERE POS = 2 AND A2.IDRULE = R.IDRULE) OPERAND1_ATTRIBUTE, ").append("(SELECT VAL FROM VAL V2 WHERE POS = 2 AND V2.IDRULE = R.IDRULE) OPERAND2_VALUE , ").append("(SELECT VAL FROM VAL V3 WHERE POS = 3 AND V3.IDRULE = R.IDRULE) OPERAND3_VALUE ").append("FROM RULE R ").append("LEFT JOIN RULETYPE RT ").append("ON R.IDRULETYPE = RT.IDRULETYPE ").append("LEFT JOIN ATTRIBUTE A1 ").append("ON A1.IDRULE = R.IDRULE ").append("LEFT JOIN OPERATOR O ").append("ON R.IDOPERATOR = O.IDOPERATOR ").append("WHERE IDTARGETDB = ").append(DB_ID).append(" AND A1.POS = 1").toString();
 
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                ArrayList<Attribute> a = new ArrayList<Attribute>();
-                a.add(new Attribute(rs.getString("TABLE_1"), rs.getString("COLUM_NAME")));
 
-                Controller.addRule(rs.getString("RULETYPE"),rs.getString("RULE_NAME"),DB_ID,);
-                //DataList.add(rs.getString("RULE_NAME"));
-                //DataList.add(rs.getString("RULETYPE"));
+                ArrayList<Attribute> attributes = new ArrayList<Attribute>();
+                attributes.add(new Attribute(rs.getString("TABLE_1"), rs.getString("COLUM_NAME"),1));
+                attributes.add(new Attribute(rs.getString("TABLE_2"), rs.getString("OPERAND1_ATTRIBUTE"),2));
+                ArrayList<Value> values = new ArrayList<Value>();
+                values.add(new Value(rs.getString("OPERAND2_VALUE"),1));
+                values.add(new Value(rs.getString("OPERAND3_VALUE"), 2));
 
-                DataList.add(rs.getString("TABLE_1"));
-                DataList.add(rs.getString("COLUMN_NAME"));
-                DataList.add(rs.getString("OPERATOR"));
-                DataList.add(rs.getString("TABLE_2"));
-                DataList.add(rs.getString("OPERAND1_ATTRIBUTE"));
-                DataList.add(rs.getString("OPERAND2_VALUE"));
-                DataList.add(rs.getString("OPERAND3_VALUE"));
-
+                Controller.addRule(rs.getString("RULETYPE"),rs.getString("RULE_NAME"),null,attributes, values, rs.getString("OPERATOR"));
             }
             rs.close();
             stmt.close();
@@ -103,7 +90,6 @@ public class GeneratorResource {
                 se.printStackTrace();
             }
         }
-        return DataList;
     }
 }
 
