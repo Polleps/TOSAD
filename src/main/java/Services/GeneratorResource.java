@@ -76,10 +76,12 @@ public class GeneratorResource {
             conn = DriverManager.getConnection(url, USER, PASS);
             Controller.printToConsole("Targetdb Connected");
 
+            ArrayList<String> rules = new ArrayList<String>();
+            rules = Controller.generateRules();
 
-            for(int i = 0; i < Controller.generateRules().size(); i++) {
+            for(int i = 0; i < rules.size(); i++) {
                 stmt = conn.createStatement();
-                sql = Controller.generateRules().get(i);
+                sql = rules.get(i);
                 Controller.printToConsole(sql);
                 //ResultSet rs = stmt.executeQuery(sql);
                 stmt.execute(sql);
