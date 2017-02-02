@@ -1,5 +1,6 @@
 package Services;
 
+import Domain.Controller;
 import Domain.RequestData;
 import com.google.gson.Gson;
 
@@ -57,12 +58,13 @@ public class FetchTableResource {
         ArrayList<String> listofTable = new ArrayList<String>();
 
         try {
-            System.out.println(driver);
+            Controller.printToConsole(driver);
             Class.forName(driver);
 
-            System.out.println("Database url: "+ url);
-            System.out.println("User: " + usr);
-            System.out.println("Password: " + pwd);
+            Controller.printToConsole("Get data from target db:");
+            Controller.printToConsole("Database url: "+ url);
+            Controller.printToConsole("User: " + usr);
+            Controller.printToConsole("Password: " + pwd);
 
             conn = DriverManager.getConnection(url, usr, pwd);
 
@@ -109,10 +111,10 @@ public class FetchTableResource {
         ArrayList<String> DataList = new ArrayList<String>();
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            System.out.println("Target DB:");
-            System.out.println(DB_URL);
-            System.out.println(USER);
-            System.out.println(PASS);
+            Controller.printToConsole("Target DB:");
+            Controller.printToConsole(DB_URL);
+            Controller.printToConsole(USER);
+            Controller.printToConsole(PASS);
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             stmt = conn.createStatement();

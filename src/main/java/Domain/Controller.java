@@ -17,7 +17,7 @@ public class Controller {
         out += err + "<br>";
     }
 
-    public static void addRule(int type, String name, Database db, List<Attribute> attrs, List<Value> vals, String operator){
+    public static void addRule(String type, String name, Database db, List<Attribute> attrs, List<Value> vals, String operator){
         rules.add(ruleFactory.createRule(type, name, db, attrs, vals, operator));
     }
 

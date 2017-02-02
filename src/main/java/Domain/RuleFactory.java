@@ -7,17 +7,17 @@ import java.util.List;
  */
 public class RuleFactory {
 
-    public Rule createRule(int type, String name, Database db, List<Attribute> attrs, List<Value> vals, String operator){
-        if(type == 1){
+    public Rule createRule(String type, String name, Database db, List<Attribute> attrs, List<Value> vals, String operator){
+        if(type.equals("AttributeCompareRule")){
             return new AttributeCompareRule(operator,db, attrs.get(0), vals.get(0), name);
         }
-        else if(type == 2){
+        else if(type.equals("AttributeRangeRule")){
             return new AttributeRangeRule(operator, db, attrs.get(0), vals.get(0), vals.get(1), name);
         }
-        else if(type == 3){
+        else if(type.equals("Inter-EntityCompareRule")){
             return new InterEntityCompareRule(operator,db,attrs.get(0), attrs.get(1), name);
         }
-        else if(type == 4){
+        else if(type.equals("TupelCompareRule")){
             return new TupelCompareRule(operator,db,attrs.get(0), attrs.get(1), name);
         }
         else{
