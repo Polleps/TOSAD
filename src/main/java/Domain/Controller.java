@@ -24,10 +24,10 @@ public class Controller {
         printToConsole("<span style='color:green;'> Added rule: " + rules.get(rules.size() - 1).getName() + "</span>");
     }
 
-    public static String generateRules(){
-        String constraints = "";
+    public static ArrayList<String> generateRules(){
+        ArrayList<String> constraints = new ArrayList<String>();
         for(Rule r : rules){
-            constraints += r.generateConstraint() + ";";
+            constraints.add(r.generateConstraint());
         }
         rules.clear();
         return constraints;
