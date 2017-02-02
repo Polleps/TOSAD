@@ -77,10 +77,12 @@ public class GeneratorResource {
             Controller.printToConsole("Targetdb Connected");
             stmt = conn.createStatement();
 
-            sql = Controller.generateRules();
-            Controller.printToConsole(sql);
-            //ResultSet rs = stmt.executeQuery(sql);
-            stmt.execute(sql);
+            for(int i = 0; i < Controller.generateRules().size(); i++) {
+                sql = Controller.generateRules().get(i);
+                Controller.printToConsole(sql);
+                //ResultSet rs = stmt.executeQuery(sql);
+                stmt.execute(sql);
+            }
             Controller.printToConsole("Done!");
 
             stmt.close();
