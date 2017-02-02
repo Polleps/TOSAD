@@ -63,8 +63,8 @@ public class GeneratorResource {
 
         Controller.printToConsole("Get data from target db:");
         Controller.printToConsole("Database url: "+ url);
-        Controller.printToConsole("User: " + usr);
-        Controller.printToConsole("Password: " + pwd);
+        Controller.printToConsole("User: " + USER);
+        Controller.printToConsole("Password: " + PASS);
         Connection conn = null;
         Statement stmt = null;
         String sql = null;
