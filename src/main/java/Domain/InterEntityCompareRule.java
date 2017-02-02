@@ -21,8 +21,8 @@ public class InterEntityCompareRule  implements Rule{
     @Override
     public String generateConstraint() {
         String constraint = "";
-        if(db instanceof SQLDatabase || db instanceof OracleDatabase){
-            constraint = "ALTER TABLE " + attrA.getTable() + "ADD CONSTRAINT " + name + " CHECK (" + attrA.getTable() + "." + attrA + " " + Controller.translateOperator(operator, "sql") + " " + attrB.getTable() + "." + attrB + ");";
+        if(db instanceof SQLDatabase || db instanceof OracleDatabase || db == null){
+            constraint = "ALTER TABLE " + attrA.getTable() + " ADD (CONSTRAINT " + name + " CHECK (" + attrA.getTable() + "." + attrA.getName() + " " + Controller.translateOperator(operator, "sql") + " " + attrB.getTable() + "." + attrB.getName() + "))";
         }
         else{
             Controller.printToConsole("ERROR: AttributeCompareRule is not supported for this database!");

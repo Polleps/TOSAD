@@ -21,8 +21,8 @@ public class TupelCompareRule implements Rule {
     @Override
     public String generateConstraint() {
         String constraint = "";
-        if(db instanceof SQLDatabase || db instanceof OracleDatabase){
-            constraint = "ALTER TABLE " + attrA.getTable() + "ADD CONSTRAINT " + name + " CHECK (" + attrA + " " + Controller.translateOperator(operator, "sql") + " " + attrB + ");";
+        if(db instanceof SQLDatabase || db instanceof OracleDatabase || db == null){
+            constraint = "ALTER TABLE " + attrA.getTable() + " ADD (CONSTRAINT " + name + " CHECK (" + attrA.getName() + " " + Controller.translateOperator(operator, "sql") + " " + attrB.getName() + "))";
         }
         else{
             Controller.printToConsole("ERROR: AttributeCompareRule is not supported for this database!");

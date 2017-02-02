@@ -29,6 +29,7 @@ public class Controller {
         for(Rule r : rules){
             constraints += r.generateConstraint() + ";";
         }
+        rules.clear();
         return constraints;
     }
 

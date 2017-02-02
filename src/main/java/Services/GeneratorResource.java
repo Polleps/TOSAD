@@ -39,6 +39,7 @@ public class GeneratorResource {
 
         getRuleFromToolDb(URL,  USER, PASS, DB_ID);
         ArrayList<String> s = getTargetDatabaseCredit(URL, USER, PASS, DB_ID);
+        Controller.printToConsole(Integer.toString(s.size()));
         if(s.size() > 2) {
             applyConstraints(s.get(0), s.get(1), s.get(2), s.get(3));
         }
@@ -61,10 +62,8 @@ public class GeneratorResource {
             driver = "mysql.jdbc.driver.OracleDriver";
         }
 
-        Controller.printToConsole("Get data from target db:");
+        Controller.printToConsole("Applying constraints:");
         Controller.printToConsole("Database url: "+ url);
-        Controller.printToConsole("User: " + USER);
-        Controller.printToConsole("Password: " + PASS);
         Connection conn = null;
         Statement stmt = null;
         String sql = null;
@@ -75,10 +74,14 @@ public class GeneratorResource {
             Controller.printToConsole(driver);
             Class.forName(driver);
             conn = DriverManager.getConnection(url, USER, PASS);
-            Controller.printToConsole("Connected");
+            Controller.printToConsole("Targetdb Connected");
             stmt = conn.createStatement();
 
             sql = Controller.generateRules();
+            Controller.printToConsole(sql);
+            //ResultSet rs = stmt.executeQuery(sql);
+            stmt.execute(sql);
+            Controller.printToConsole("Done!");
 
             stmt.close();
             conn.close();
