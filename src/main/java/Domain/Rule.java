@@ -6,4 +6,5 @@ package Domain;
 public interface Rule {
     public String generateConstraint();
     public Database getDataBase();
+    public String getName();
 }

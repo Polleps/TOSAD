@@ -19,6 +19,7 @@ public class Controller {
 
     public static void addRule(String type, String name, Database db, List<Attribute> attrs, List<Value> vals, String operator){
         rules.add(ruleFactory.createRule(type, name, db, attrs, vals, operator));
+        printToConsole("<span style='color:green;'> Added rule: " + rules.get(rules.size() - 1).getName() + "</span>");
     }
 
     public ArrayList<String> generateRules(){

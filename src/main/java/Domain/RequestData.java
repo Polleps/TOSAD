@@ -8,15 +8,17 @@ public class RequestData {
     private String userName;
     private String password;
     private String dbId;
-    public RequestData(String url, String userName, String password, String dbId) {
+    private String serviceName;
+    public RequestData(String url, String userName, String password, String dbId, String serviceName) {
         this.setUrl(url);
         this.setUserName(userName);
         this.setPassword(password);
         this.setDbId(dbId);
+        this.setServiceName(serviceName);
     }
 
     public String getUrl() {
-        return url;
+        return url + "/" + serviceName;
     }
 
     public void setUrl(String url) {
@@ -46,5 +48,16 @@ public class RequestData {
 
     public void setDbId(String dbId) {
         this.dbId = dbId;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+    public String toString(){
+        return "DATA: URL: " + getUrl() + " USR: " + userName + " PSW: " + password + " DB: " + dbId;
     }
 }

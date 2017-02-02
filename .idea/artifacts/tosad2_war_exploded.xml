@@ -27,6 +27,7 @@
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
           <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0.1" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.7" />
+          <element id="library" level="project" name="Maven: com.oracle.jdbc:ojdbc7:12.1.0.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -43,5 +43,6 @@
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle.jdbc:ojdbc7:12.1.0.2" level="project" />
   </component>
 </module>

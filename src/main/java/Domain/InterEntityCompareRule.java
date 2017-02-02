@@ -27,4 +27,9 @@ public class InterEntityCompareRule  implements Rule{
     public Database getDataBase() {
         return null;
     }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 }
