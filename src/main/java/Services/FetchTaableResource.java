@@ -2,6 +2,7 @@ package Services;
 
 import Domain.Controller;
 import Domain.RequestData;
+import Domain.Table;
 import com.google.gson.Gson;
 
 import javax.ws.rs.GET;
@@ -62,7 +63,7 @@ public class FetchTaableResource {
         Statement stmt = null;
         String sql = null;
 
-        ArrayList<String> listofTable = new ArrayList<String>();
+        ArrayList<Table> listofTable = new ArrayList<Table>();
 
         try {
             Controller.printToConsole(driver);
@@ -78,7 +79,8 @@ public class FetchTaableResource {
 
             while (rs.next()) {
                 if (rs.getString(4).equalsIgnoreCase("TABLE")) {
-                    listofTable.add(rs.getString(3));
+                    //listofTable.add(new Table(rs.getString(3)));
+                    listofTable.add(new Table(rs.getString(3)));
                 }
             }
 
@@ -90,7 +92,7 @@ public class FetchTaableResource {
             for (int i = 0; i < listofTable.size(); i++) {
                 
 
-                sql = "SELECT column_name FROM all_tab_cols WHERE table_name ='" + listofTable.get(i) + "'";
+                sql = "SELECT column_name FROM all_tab_cols WHERE table_name ='" + listofTable.get(i).getName() + "'";
 
                 ResultSet rs1 = stmt.executeQuery(sql);
 
@@ -98,7 +100,8 @@ public class FetchTaableResource {
                 while (rs1.next()) {
                     // Retrieve by column name
                     // DataList.add(rs.getString("NAME"));
-                    System.out.println(rs1.getString("column_name"));
+                    Controller.printToConsole(listofTable.get(i).getName()+" ----> " +rs1.getString("column_name") );
+                    listofTable.get(i).addAttribute(rs1.getString("column_name"));
 
 
 
@@ -128,7 +131,13 @@ public class FetchTaableResource {
                 se.printStackTrace();
             }
         }
-        String json = new Gson().toJson(listofTable);
+        //String json = new Gson().toJson(listofTable);
+        String json = "[";
+        for(Table t : listofTable){
+            json += t.getJSON() + ",";
+        }
+        json += "]";
+        Controller.printToConsole(json);
         return json;
     }
 

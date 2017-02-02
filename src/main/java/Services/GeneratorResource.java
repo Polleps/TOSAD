@@ -38,7 +38,7 @@ public class GeneratorResource {
         String DB_ID = requestData.getDbId();
 
         getRuleFromToolDb(URL,  USER, PASS, DB_ID);
-
+        
         Domain.Controller.out += data + "<br>"; //Dit is voor debugging :)
 
 

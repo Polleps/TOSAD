@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Table {
     private String name;
-    private ArrayList<String> columns;
+    private ArrayList<String> columns = new ArrayList<String>();
 
     public Table(String name){
         this.name = name;
@@ -21,8 +21,10 @@ public class Table {
 
     public String getJSON(){
         String out = "{table:'" + getName() + "', columns:[";
-        for(String s : columns){
-            out += "'" + s + "',";
+        if(columns != null) {
+            for (String s : columns) {
+                out += "'" + s + "',";
+            }
         }
         out += "]}";
         return out;
