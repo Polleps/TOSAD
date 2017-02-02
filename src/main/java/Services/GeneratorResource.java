@@ -38,13 +38,120 @@ public class GeneratorResource {
         String DB_ID = requestData.getDbId();
 
         getRuleFromToolDb(URL,  USER, PASS, DB_ID);
-        
+        ArrayList<String> s = getTargetDatabaseCredit(URL, USER, PASS, DB_ID);
+        if(s.size() > 2) {
+            applyConstraints(s.get(0), s.get(1), s.get(2), s.get(3));
+        }
         Domain.Controller.out += data + "<br>"; //Dit is voor debugging :)
 
 
         return null;
     }
 
+    private void applyConstraints(String DB_URL, String USER, String PASS, String db_driver){
+        String driver = null;
+        String url = null;
+        if(db_driver.equals("oracle")){
+            url = "jdbc:oracle:thin:@" + DB_URL;
+            driver = "oracle.jdbc.driver.OracleDriver";
+        }
+        else if (db_driver.equals("mysql")
+                ){
+            url = "sql:mysql:thin:@" + DB_URL;
+            driver = "mysql.jdbc.driver.OracleDriver";
+        }
+
+        Controller.printToConsole("Get data from target db:");
+        Controller.printToConsole("Database url: "+ url);
+        Controller.printToConsole("User: " + usr);
+        Controller.printToConsole("Password: " + pwd);
+        Connection conn = null;
+        Statement stmt = null;
+        String sql = null;
+
+
+
+        try {
+            Controller.printToConsole(driver);
+            Class.forName(driver);
+            conn = DriverManager.getConnection(url, USER, PASS);
+            Controller.printToConsole("Connected");
+            stmt = conn.createStatement();
+
+            sql = Controller.generateRules();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
+    private ArrayList<String> getTargetDatabaseCredit(String DB_URL, String USER, String PASS, String DB_ID){
+        Connection conn = null;
+        Statement stmt = null;
+        String sql = null;
+        String db_name = null;
+        String url = "jdbc:oracle:thin:@" + DB_URL;
+        ArrayList<String> DataList = new ArrayList<String>();
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Controller.printToConsole("Target DB:");
+            Controller.printToConsole(url);
+            Controller.printToConsole(USER);
+            Controller.printToConsole(PASS);
+            conn = DriverManager.getConnection(url, USER, PASS);
+            Controller.printToConsole("Connected");
+            stmt = conn.createStatement();
+
+            sql = "SELECT * FROM TARGETDB WHERE IDTARGETDB = " + DB_ID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                DataList.add(rs.getString("URL"));
+                DataList.add(rs.getString("USERNAME"));
+                DataList.add(rs.getString("PASSWORD"));
+                DataList.add(rs.getString("LANGUAGE"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return DataList;
+    }
 
     private void getRuleFromToolDb(String DB_URL, String USER, String PASS, String DB_ID) {
         Connection conn = null;
@@ -103,4 +210,3 @@ public class GeneratorResource {
         }
     }
 }
-
