@@ -50,11 +50,11 @@
       <file leaf-file-name="FetchTaableResource.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Services/FetchTaableResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="39" column="9" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
+            <state relative-caret-position="1479">
+              <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding>
-                <marker date="1486059179652" expanded="true" signature="3034:3127" ph="SELECT colum... all_tab_cols" />
-                <marker date="1486059179652" expanded="true" signature="5318:5360" ph="SELECT * FRO... TARGETDB" />
+                <marker date="1486068101914" expanded="true" signature="3034:3127" ph="SELECT colum... all_tab_cols" />
+                <marker date="1486068101914" expanded="true" signature="5318:5360" ph="SELECT * FRO... TARGETDB" />
               </folding>
             </state>
           </provider>
@@ -63,11 +63,9 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Domain/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="272">
               <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-              <folding>
-                <marker date="1486058541129" expanded="true" signature="24:62" ph="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneratorResource.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GeneratorResource.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Services/GeneratorResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="66" column="53" lean-forward="false" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+            <state relative-caret-position="96">
+              <caret line="166" column="54" lean-forward="false" selection-start-line="166" selection-start-column="54" selection-end-line="166" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5114#5122#0" expanded="true" />
@@ -111,26 +109,24 @@
       <file leaf-file-name="AttributeCompareRule.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Domain/AttributeCompareRule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+            <state relative-caret-position="442">
+              <caret line="26" column="116" lean-forward="false" selection-start-line="26" selection-start-column="116" selection-end-line="26" selection-end-column="116" />
               <folding>
-                <element signature="e#1169#1170#0" expanded="true" />
-                <element signature="e#1196#1197#0" expanded="true" />
+                <element signature="e#1168#1169#0" expanded="true" />
+                <element signature="e#1195#1196#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AttributeRangeRule.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AttributeRangeRule.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Domain/AttributeRangeRule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="42" column="5" lean-forward="false" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state relative-caret-position="323">
+              <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
               <folding>
+                <element signature="e#1220#1221#0" expanded="true" />
                 <element signature="e#1247#1248#0" expanded="true" />
-                <marker date="1486058541118" expanded="false" signature="1147:1158" ph=" { " />
-                <marker date="1486058541118" expanded="false" signature="1170:1176" ph=" }" />
-                <marker date="1486058541118" expanded="true" signature="1219:1230" ph=" { " />
               </folding>
             </state>
           </provider>
@@ -199,14 +195,14 @@
         <option value="$PROJECT_DIR$/src/main/java/Services/FetchTableResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/Domain/RequestData.java" />
         <option value="$PROJECT_DIR$/src/main/java/Domain/Rule.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Domain/AttributeCompareRule.java" />
         <option value="$PROJECT_DIR$/src/main/java/Domain/AttributeRangeRule.java" />
         <option value="$PROJECT_DIR$/src/main/java/Domain/InterEntityCompareRule.java" />
         <option value="$PROJECT_DIR$/src/main/java/Domain/TupelCompareRule.java" />
         <option value="$PROJECT_DIR$/src/main/java/Domain/Controller.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/Services/FetchTaableResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/Services/GeneratorResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Services/FetchTaableResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Domain/AttributeCompareRule.java" />
       </list>
     </option>
   </component>
@@ -229,10 +225,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="x" value="-7" />
+    <option name="width" value="1294" />
+    <option name="height" value="1087" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -859,15 +854,15 @@
       <workItem from="1486046626711" duration="2726000" />
       <workItem from="1486056084088" duration="117000" />
       <workItem from="1486056518719" duration="1701000" />
-      <workItem from="1486058647409" duration="1168000" />
+      <workItem from="1486058647409" duration="4800000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36703000" />
+    <option name="totallyTimeSpent" value="40335000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-7" y="0" width="1294" height="1087" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -890,7 +885,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18228404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19483568" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -942,8 +937,8 @@
         <state relative-caret-position="646">
           <caret line="40" column="20" lean-forward="false" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
           <folding>
-            <element signature="e#1169#1170#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -953,10 +948,8 @@
         <state relative-caret-position="510">
           <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
           <folding>
+            <element signature="e#1220#1221#0" expanded="true" />
             <element signature="e#1247#1248#0" expanded="true" />
-            <marker date="1486058541118" expanded="false" signature="1147:1158" ph=" { " />
-            <marker date="1486058541118" expanded="false" signature="1170:1176" ph=" }" />
-            <marker date="1486058541118" expanded="true" signature="1219:1230" ph=" { " />
           </folding>
         </state>
       </provider>
@@ -997,9 +990,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="19" column="78" lean-forward="false" selection-start-line="19" selection-start-column="78" selection-end-line="19" selection-end-column="78" />
-          <folding>
-            <marker date="1486058541129" expanded="true" signature="24:62" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,8 +1038,8 @@
         <state relative-caret-position="425">
           <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
           <folding>
-            <element signature="e#1169#1170#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1066,10 +1057,8 @@
         <state relative-caret-position="119">
           <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
           <folding>
+            <element signature="e#1220#1221#0" expanded="true" />
             <element signature="e#1247#1248#0" expanded="true" />
-            <marker date="1486058541118" expanded="false" signature="1147:1158" ph=" { " />
-            <marker date="1486058541118" expanded="false" signature="1170:1176" ph=" }" />
-            <marker date="1486058541118" expanded="true" signature="1219:1230" ph=" { " />
           </folding>
         </state>
       </provider>
@@ -1086,9 +1075,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1486058541129" expanded="true" signature="24:62" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1121,8 +1108,8 @@
         <state relative-caret-position="425">
           <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
           <folding>
-            <element signature="e#1169#1170#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1132,10 +1119,8 @@
         <state relative-caret-position="323">
           <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
           <folding>
+            <element signature="e#1220#1221#0" expanded="true" />
             <element signature="e#1247#1248#0" expanded="true" />
-            <marker date="1486058541118" expanded="false" signature="1147:1158" ph=" { " />
-            <marker date="1486058541118" expanded="false" signature="1170:1176" ph=" }" />
-            <marker date="1486058541118" expanded="true" signature="1219:1230" ph=" { " />
           </folding>
         </state>
       </provider>
@@ -1192,9 +1177,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding>
-            <marker date="1486058541129" expanded="true" signature="24:62" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,19 +1294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Domain/AttributeRangeRule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="42" column="5" lean-forward="false" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <element signature="e#1247#1248#0" expanded="true" />
-            <marker date="1486058541118" expanded="false" signature="1147:1158" ph=" { " />
-            <marker date="1486058541118" expanded="false" signature="1170:1176" ph=" }" />
-            <marker date="1486058541118" expanded="true" signature="1219:1230" ph=" { " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Domain/InterEntityCompareRule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1357,27 +1327,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Services/FetchTableResource.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Domain/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-          <folding>
-            <marker date="1486058541129" expanded="true" signature="24:62" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Domain/AttributeCompareRule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-          <folding>
-            <element signature="e#1169#1170#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Domain/RuleFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1386,27 +1335,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Services/FetchTaableResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="39" column="9" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
-          <folding>
-            <marker date="1486059179652" expanded="true" signature="3034:3127" ph="SELECT colum... all_tab_cols" />
-            <marker date="1486059179652" expanded="true" signature="5318:5360" ph="SELECT * FRO... TARGETDB" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Services/GeneratorResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="66" column="53" lean-forward="false" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+        <state relative-caret-position="96">
+          <caret line="166" column="54" lean-forward="false" selection-start-line="166" selection-start-column="54" selection-end-line="166" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5114#5122#0" expanded="true" />
             <element signature="e#7125#7136#0" expanded="true" />
             <element signature="e#7480#7487#0" expanded="true" />
             <marker date="1486059814332" expanded="true" signature="3866:3908" ph="SELECT * FRO... TARGETDB" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Domain/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Services/FetchTaableResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding>
+            <marker date="1486068101914" expanded="true" signature="3034:3127" ph="SELECT colum... all_tab_cols" />
+            <marker date="1486068101914" expanded="true" signature="5318:5360" ph="SELECT * FRO... TARGETDB" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Domain/AttributeCompareRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="116" lean-forward="false" selection-start-line="26" selection-start-column="116" selection-end-line="26" selection-end-column="116" />
+          <folding>
+            <element signature="e#1168#1169#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Domain/AttributeRangeRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding>
+            <element signature="e#1220#1221#0" expanded="true" />
+            <element signature="e#1247#1248#0" expanded="true" />
           </folding>
         </state>
       </provider>
