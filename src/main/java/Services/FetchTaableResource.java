@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Created by Pawel on 1-2-2017.
  */
 @Path("/fetch")
-public class FetchTableResource {
+public class FetchTaableResource {
 
     @GET
     @Produces("application/json")
@@ -32,9 +32,13 @@ public class FetchTableResource {
 
         Domain.Controller.out += "Fetching tables for Database (ID:" + requestData.getDbId() + ")<br>";
         ArrayList<String> s = getTargetDatabaseCredit(DB_URL, USER, PASS, DB_ID	);
-        String str = getDataFromTargetDB(s.get(0), s.get(1), s.get(2),s.get(3), databaseSchema);
-        String json = new Gson().toJson(str);
-        return json;
+        if(s.size() > 2) {
+            String str = getDataFromTargetDB(s.get(0), s.get(1), s.get(2), s.get(3), databaseSchema);
+            String json = new Gson().toJson(str);
+            return json;
+        }
+        Controller.printToConsole("ERROR: Could not find target database credentials!");
+        return null;
     }
 
     private String getDataFromTargetDB(String DB_URL, String usr, String pwd, String db_driver, String schema){
@@ -50,7 +54,10 @@ public class FetchTableResource {
             driver = "mysql.jdbc.driver.OracleDriver";
         }
 
-
+        Controller.printToConsole("Get data from target db:");
+        Controller.printToConsole("Database url: "+ url);
+        Controller.printToConsole("User: " + usr);
+        Controller.printToConsole("Password: " + pwd);
         Connection conn = null;
         Statement stmt = null;
 
@@ -61,10 +68,7 @@ public class FetchTableResource {
             Controller.printToConsole(driver);
             Class.forName(driver);
 
-            Controller.printToConsole("Get data from target db:");
-            Controller.printToConsole("Database url: "+ url);
-            Controller.printToConsole("User: " + usr);
-            Controller.printToConsole("Password: " + pwd);
+
 
             conn = DriverManager.getConnection(url, usr, pwd);
 
@@ -108,15 +112,16 @@ public class FetchTableResource {
         Statement stmt = null;
         String sql = null;
         String db_name = null;
+        String url = "jdbc:oracle:thin:@" + DB_URL;
         ArrayList<String> DataList = new ArrayList<String>();
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Controller.printToConsole("Target DB:");
-            Controller.printToConsole(DB_URL);
+            Controller.printToConsole(url);
             Controller.printToConsole(USER);
             Controller.printToConsole(PASS);
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
+            conn = DriverManager.getConnection(url, USER, PASS);
+            Controller.printToConsole("Connected");
             stmt = conn.createStatement();
 
             sql = "SELECT * FROM TARGETDB WHERE IDTARGETDB = " + DB_ID;
