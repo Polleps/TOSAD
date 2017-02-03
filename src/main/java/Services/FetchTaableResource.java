@@ -91,22 +91,21 @@ public class FetchTaableResource {
             // sql = "SELECT * from customer";
             for (int i = 0; i < listofTable.size(); i++) {
                 
+                if(! listofTable.get(i).getName().equals("HTMLDB_PLAN_TABLE")) {
+                    sql = "SELECT column_name FROM all_tab_cols WHERE table_name ='" + listofTable.get(i).getName() + "'";
 
-                sql = "SELECT column_name FROM all_tab_cols WHERE table_name ='" + listofTable.get(i).getName() + "'";
+                    ResultSet rs1 = stmt.executeQuery(sql);
 
-                ResultSet rs1 = stmt.executeQuery(sql);
-
-                // STEP 5: Extract data from result set
-                while (rs1.next()) {
-                    // Retrieve by column name
-                    // DataList.add(rs.getString("NAME"));
-                    Controller.printToConsole(listofTable.get(i).getName()+" ----> " +rs1.getString("column_name") );
-                    listofTable.get(i).addAttribute(rs1.getString("column_name"));
-
-
+                    // STEP 5: Extract data from result set
+                    while (rs1.next()) {
+                        // Retrieve by column name
+                        // DataList.add(rs.getString("NAME"));
+                        Controller.printToConsole(listofTable.get(i).getName() + " ----> " + rs1.getString("column_name"));
+                        listofTable.get(i).addAttribute(rs1.getString("column_name"));
 
 
-                    // DataList.add(rs.getString("IDTARGETDB"));
+                        // DataList.add(rs.getString("IDTARGETDB"));
+                    }
                 }
             }
             // STEP 6: Clean-up environment
