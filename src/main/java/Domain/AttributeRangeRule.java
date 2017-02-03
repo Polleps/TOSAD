@@ -24,7 +24,7 @@ public class AttributeRangeRule implements Rule {
     public String generateConstraint() {
         String constraint = "";
         if(db instanceof SQLDatabase || db instanceof OracleDatabase || db == null){
-            constraint = "ALTER TABLE " + attr.getTable() + " ADD (CONSTRAINT " + name + " CHECK (" + attr.getName() + " " + Controller.translateOperator(operator, "sql") + " " + valA.getVal() + " AND " + valB.getVal() +" ))";
+            constraint = "ALTER TABLE " + attr.getTable() + " ADD (CONSTRAINT " + name + " CHECK (" + attr.getName() + " " + Controller.translateOperator(operator, "sql") + " " + valA.getSqlName() + " AND " + valB.getSqlName() +" ))";
         }
         else{
             Controller.printToConsole("ERROR: AttributeCompareRule is not supported for this database!");

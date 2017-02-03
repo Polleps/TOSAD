@@ -29,8 +29,8 @@ public class DeleterResource {
         String USER = requestData.getUserName();
         String PASS = requestData.getPassword();
         String DB_ID = requestData.getDbId();
-        String TABLE = null;
-        String RULE = null;
+        String TABLE = requestData.getRuleTable();
+        String RULE = requestData.getRuleName();
 
         ArrayList<String> s = getTargetDatabaseCredit(URL, USER, PASS, DB_ID);
         Controller.printToConsole(Integer.toString(s.size()));
