@@ -24,7 +24,7 @@ public class AttributeCompareRule implements Rule {
     public String generateConstraint() {
         String constraint = "";
         if(db instanceof SQLDatabase || db instanceof OracleDatabase || db == null){
-            constraint = "ALTER TABLE " + attr.getTable() + " ADD (CONSTRAINT " + name + " CHECK (" + attr.getName() + "" + Controller.translateOperator(operator, "sql") + "" + val.getSqlName() + "))";
+            constraint = "ALTER TABLE " + attr.getTable() + "ADD (CONSTRAINT " + name + " CHECK (" + attr.getName() + "" + Controller.translateOperator(operator, "sql") + "" + val.getVal() + "))";
         }
         else{
             Controller.printToConsole("ERROR: AttributeCompareRule is not supported for this database!");
