@@ -11,6 +11,9 @@ public class RequestData {
     private String serviceName;
     private String ruleName;
     private String ruleTable;
+    private String primaryKey;
+    private String foreignKey;
+
     /*public RequestData(String url, String userName, String password, String dbId, String serviceName) {
         this.setUrl(url);
         this.setUserName(userName);
@@ -18,7 +21,7 @@ public class RequestData {
         this.setDbId(dbId);
         this.setServiceName(serviceName);
     }*/
-    public RequestData(String url, String userName, String password, String dbId, String serviceName, String ruleName, String ruleTable) {
+    public RequestData(String url, String userName, String password, String dbId, String serviceName, String ruleName, String ruleTable, String primaryKey, String foreignKey) {
         this.setUrl(url);
         this.setUserName(userName);
         this.setPassword(password);
@@ -26,6 +29,8 @@ public class RequestData {
         this.setServiceName(serviceName);
         this.setRuleName(ruleName);
         this.setRuleTable(ruleTable);
+        this.setPrimaryKey(primaryKey);
+        this.setForeignKey(foreignKey);
     }
 
     public String getUrl() {
@@ -86,5 +91,21 @@ public class RequestData {
 
     public void setRuleTable(String ruleTable) {
         this.ruleTable = ruleTable;
+    }
+
+    public String getPrimaryKey() {
+        return primaryKey;
+    }
+
+    public void setPrimaryKey(String primaryKey) {
+        this.primaryKey = primaryKey;
+    }
+
+    public String getForeignKey() {
+        return foreignKey;
+    }
+
+    public void setForeignKey(String foreignKey) {
+        this.foreignKey = foreignKey;
     }
 }

@@ -34,15 +34,24 @@ public class FetchTaableResource {
         Domain.Controller.out += "Fetching tables for Database (ID:" + requestData.getDbId() + ")<br>";
         ArrayList<String> s = getTargetDatabaseCredit(DB_URL, USER, PASS, DB_ID	);
         if(s.size() > 2) {
-            String str = getDataFromTargetDB(s.get(0), s.get(1), s.get(2), s.get(3), databaseSchema);
-            String json = new Gson().toJson(str);
-            return json;
+            ArrayList<Table> tables = getDataFromTargetDB(s.get(0), s.get(1), s.get(2), s.get(3), databaseSchema);
+            addToDatabase(tables);
+            return "{'STATUS' : 'DONE'}";
         }
         Controller.printToConsole("ERROR: Could not find target database credentials!");
         return null;
     }
+    private void addToDatabase(ArrayList<Table> tables){
+        //Maak connectie met database
+        //Sql dingen enzo
 
-    private String getDataFromTargetDB(String DB_URL, String usr, String pwd, String db_driver, String schema){
+        //Insert alle tabellen:
+
+        for(Table table : tables){
+            //SQL Dingen enzo
+        }
+    }
+    private ArrayList<Table> getDataFromTargetDB(String DB_URL, String usr, String pwd, String db_driver, String schema){
         String driver = null;
         String url = null;
         if(db_driver.equals("oracle")){
@@ -137,7 +146,7 @@ public class FetchTaableResource {
         }
         json += "]";
         Controller.printToConsole(json);
-        return json;
+        return listofTable;
     }
 
 
