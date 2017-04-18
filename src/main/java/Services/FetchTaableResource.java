@@ -41,15 +41,59 @@ public class FetchTaableResource {
         Controller.printToConsole("ERROR: Could not find target database credentials!");
         return null;
     }
-    private void addToDatabase(ArrayList<Table> tables){
+    private void addToDatabase(ArrayList<Table> tables,String DB_URL, String USER, String PASS, String DB_ID){
         //Maak connectie met database
         //Sql dingen enzo
+        Connection conn = null;
+        Statement stmt = null;
+        String sql = null;
+        String db_name = null;
+        String url = "jdbc:oracle:thin:@" + DB_URL;
+        ArrayList<String> DataList = new ArrayList<String>();
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Controller.printToConsole("Copy Target DB:");
+            Controller.printToConsole(url);
+            Controller.printToConsole(USER);
+            Controller.printToConsole(PASS);
+            conn = DriverManager.getConnection(url, USER, PASS);
+            Controller.printToConsole("Connected");
+            stmt = conn.createStatement();
 
-        //Insert alle tabellen:
 
-        for(Table table : tables){
-            //SQL Dingen enzo
+
+            for(Table table : tables){
+
+                sql = "SELECT * FROM TARGETDB WHERE IDTARGETDB = " + DB_ID;
+                stmt.executeQuery(sql);
+                //Insert alle tabellen:
+
+                //SQL Dingen enzo
+            }
+
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
         }
+
+
     }
     private ArrayList<Table> getDataFromTargetDB(String DB_URL, String usr, String pwd, String db_driver, String schema){
         String driver = null;
