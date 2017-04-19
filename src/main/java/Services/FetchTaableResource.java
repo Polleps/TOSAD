@@ -63,9 +63,9 @@ public class FetchTaableResource {
 
 
             for(Table table : tables){
-                tabelenID
-                        naam
-                        TargetDBidTragerDB
+                table.getAttributes();
+
+                sql = "SELECT column_name FROM all_tab_cols WHERE table_name ='" + listofTable.get(i).getName() + "'"
                 sql = "SELECT * FROM TARGETDB WHERE IDTARGETDB = " + DB_ID;
                 stmt.executeQuery(sql);
                 //Insert alle tabellen:
