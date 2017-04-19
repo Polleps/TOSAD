@@ -18,6 +18,7 @@ public class Table {
     public void addAttribute(String attr){
         columns.add(attr);
     }
+    public ArrayList<String> getAttributes(){return columns;}
 
     public String getJSON(){
         String out = "{table:'" + getName() + "', columns:[";
