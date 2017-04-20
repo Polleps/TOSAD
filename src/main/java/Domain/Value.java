@@ -10,12 +10,15 @@ public class Value {
     private int valPos;
 
     public Value(String val, int valPos) {
-        this.val = "'" + val + "'";
+        this.val = val;
         this.valPos = valPos;
 
     }
 
     public String getVal() {
+        return "'" + val + "'";
+    }
+    public String getRawVal(){
         return val;
     }
 

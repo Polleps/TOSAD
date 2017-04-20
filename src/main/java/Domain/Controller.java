@@ -12,11 +12,13 @@ public class Controller {
     public static String out = "<strong>Output:</strong><br>";
     private static List<Rule> rules = new ArrayList<Rule>();
     private static RuleFactory ruleFactory = new RuleFactory();
+    private static int outNum = 0;
     public static String getOut(){
         return out;
     }
     public static void printToConsole(String err){
-        out += err + "<br>";
+        out += outNum + " | " + err + "<br>";
+        outNum++;
     }
     public static boolean isNumeric(String str)
     {
