@@ -15,6 +15,8 @@ import com.google.gson.Gson;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,8 @@ public class GeneratorResource {
         Gson gson = new Gson();
         RequestData requestData = gson.fromJson(data, RequestData.class);
         //in request data staan de gegevens van de database dus je kan bijvoorbeeld requestData.getUrl() gebruiken
-        Controller.printToConsole(requestData.toString());
+        Controller.printToConsole("<span class=\"requestHead\">----------------------GENERATING RULES---------------------</span>");
+        //Controller.printToConsole(requestData.toString());
         String URL = requestData.getUrl();
         String USER = requestData.getUserName();
         String PASS = requestData.getPassword();
@@ -40,7 +43,7 @@ public class GeneratorResource {
 
         getRuleFromToolDb(URL, USER, PASS, DB_ID);
         ArrayList<String> s = getTargetDatabaseCredit(URL, USER, PASS, DB_ID);
-        Controller.printToConsole(Integer.toString(s.size()));
+        //Controller.printToConsole(Integer.toString(s.size()));
         if (s.size() > 2) {
             applyConstraints(s.get(0), s.get(1), s.get(2), s.get(3));
         }
@@ -63,7 +66,7 @@ public class GeneratorResource {
         }
 
         Controller.printToConsole("Applying constraints:");
-        Controller.printToConsole("Database url: " + url);
+        //Controller.printToConsole("Database url: " + url);
         Connection conn = null;
         Statement stmt = null;
         String sql = null;
@@ -75,10 +78,10 @@ public class GeneratorResource {
         for (int i = 0; i < rules.size(); i++) {
 
             try {
-                Controller.printToConsole(driver);
+                //Controller.printToConsole(driver);
                 Class.forName(driver);
                 conn = DriverManager.getConnection(url, USER, PASS);
-                Controller.printToConsole("Targetdb Connected");
+                //Controller.printToConsole("Targetdb Connected");
 
 
                 stmt = conn.createStatement();
@@ -94,9 +97,15 @@ public class GeneratorResource {
                 conn.close();
 
             } catch (SQLException se) {
-                se.printStackTrace();
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                se.printStackTrace(pw);
+                Controller.printToConsole(sw.toString());
             } catch (Exception e) {
-                e.printStackTrace();
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                e.printStackTrace(pw);
+                Controller.printToConsole(sw.toString());
             } finally {
                 try {
                     if (stmt != null)
@@ -124,12 +133,12 @@ public class GeneratorResource {
         ArrayList<String> DataList = new ArrayList<String>();
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Controller.printToConsole("Target DB:");
-            Controller.printToConsole(url);
+            //Controller.printToConsole("Target DB:");
+            /*Controller.printToConsole(url);
             Controller.printToConsole(USER);
-            Controller.printToConsole(PASS);
+            Controller.printToConsole(PASS);*/
             conn = DriverManager.getConnection(url, USER, PASS);
-            Controller.printToConsole("Connected");
+            //Controller.printToConsole("Connected");
             stmt = conn.createStatement();
 
             sql = "SELECT * FROM TARGETDB WHERE IDTARGETDB = " + DB_ID;
@@ -175,25 +184,16 @@ public class GeneratorResource {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(url, USER, PASS);
-            Controller.printToConsole("Connected");
+            //Controller.printToConsole("Connected");
             stmt = conn.createStatement();
             sql = "SELECT " + "R.NAME RULE_NAME, " + "RT.NAME RULETYPE, " + "A1.TABEL TABLE_1, " + "A1.COLUMN_NAME COLUMN_NAME, " + "O.NAME OPERATOR, " + "(SELECT TABEL FROM ATTRIBUTE A2 WHERE POS = 2 AND A2.IDRULE = R.IDRULE) TABLE_2, " + "(SELECT COLUMN_NAME FROM ATTRIBUTE A2 WHERE POS = 2 AND A2.IDRULE = R.IDRULE) OPERAND1_ATTRIBUTE, " + "(SELECT VAL FROM VAL V2 WHERE POS = 2 AND V2.IDRULE = R.IDRULE) OPERAND2_VALUE , " + "(SELECT VAL FROM VAL V3 WHERE POS = 3 AND V3.IDRULE = R.IDRULE) OPERAND3_VALUE " + "FROM RULE R " + "LEFT JOIN RULETYPE RT " + "ON R.IDRULETYPE = RT.IDRULETYPE " + "LEFT JOIN ATTRIBUTE A1 " + "ON A1.IDRULE = R.IDRULE " + "LEFT JOIN OPERATOR O " + "ON R.IDOPERATOR = O.IDOPERATOR " + "WHERE IDTARGETDB = " + DB_ID + " AND A1.POS = 1";
 
             ResultSet rs = stmt.executeQuery(sql);
-            Controller.printToConsole(rs.toString());
+            //Controller.printToConsole(rs.toString());
             while (rs.next()) {
-                Controller.printToConsole(rs.getString("RULE_NAME"));
-                Controller.printToConsole(rs.getString("RULETYPE"));
-                Controller.printToConsole(rs.getString("TABLE_1"));
-                Controller.printToConsole(rs.getString("COLUMN_NAME"));
-                Controller.printToConsole(rs.getString("OPERATOR"));
-                Controller.printToConsole(rs.getString("TABLE_2"));
-                Controller.printToConsole(rs.getString("OPERAND1_ATTRIBUTE"));
-                Controller.printToConsole(rs.getString("OPERAND2_VALUE"));
-                Controller.printToConsole(rs.getString("OPERAND3_VALUE"));
                 ArrayList<Attribute> attributes = new ArrayList<Attribute>();
                 attributes.add(new Attribute(rs.getString("TABLE_1"), rs.getString("COLUMN_NAME"), 1, "iets"));
-                Controller.printToConsole(attributes.get(0).getName());
+                //Controller.printToConsole(attributes.get(0).getName());
                 attributes.add(new Attribute(rs.getString("TABLE_2"), rs.getString("OPERAND1_ATTRIBUTE"), 2, "iets"));
                 ArrayList<Value> values = new ArrayList<Value>();
                 values.add(new Value(rs.getString("OPERAND2_VALUE"), 1));

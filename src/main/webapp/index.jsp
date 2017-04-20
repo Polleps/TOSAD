@@ -30,6 +30,11 @@
     #consoleText {
         margin: 10px;
     }
+    .requestHead {
+        font-size: 19px;
+        color: #0794a3;
+        text-decoration: underline;
+    }
 </style>
 <body style="">
 <header>
@@ -38,6 +43,7 @@
         var xhttp  = new XMLHttpRequest();
         xhttp.open("GET", "http://tosad2-polleps.rhcloud.com/restservices/fetch/getTableData/{url:'ondora02.hu.nl:8521',userName:'tosad_2016_2d_team6',password:'tosad_2016_2d_team6',dbId:'27',serviceName:'cursus02.hu.nl'}", false);
         xhttp.send();
+        'http://tosad2-polleps.rhcloud.com/restservices/generator/deleteRule/{url:"'||v('DATABASE_URL')||'",serviceName:"'||v('DATABASE_SERVICE_NAME')||'",userName:"tosad_2016_2d_team6",password:"tosad_2016_2d_team6",dbId:"'|| rule_target ||'",ruleName:"' || rule_name || '",ruleTable:"' || rule_table ||'", ruleTypeId:"' || rule_type_id ||'"}'
 
     </script>
 </header>

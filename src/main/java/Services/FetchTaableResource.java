@@ -27,6 +27,7 @@ public class FetchTaableResource {
     public String getTableData(@PathParam("dbId") String data){
         Gson gson = new Gson();
         RequestData requestData = gson.fromJson(data, RequestData.class);
+        Controller.printToConsole("<span class=\"requestHead\">----------------------FETCHING TABLES---------------------</span>");
         String databaseSchema = "TOSAD_2016_2D_TEAM6_TARGET";
 
         String DB_URL = requestData.getUrl();
@@ -34,7 +35,7 @@ public class FetchTaableResource {
         String PASS = requestData.getPassword();
         String DB_ID = requestData.getDbId();
 
-        Domain.Controller.out += "Fetching tables for Database (ID:" + requestData.getDbId() + ")<br>";
+        //Domain.Controller.out += "Fetching tables for Database (ID:" + requestData.getDbId() + ")<br>";
         ArrayList<String> s = getTargetDatabaseCredit(DB_URL, USER, PASS, DB_ID	);
         if(s.size() > 2) {
             ArrayList<Table> tables = getDataFromTargetDB(s.get(0), s.get(1), s.get(2), s.get(3), databaseSchema);
@@ -55,12 +56,12 @@ public class FetchTaableResource {
         ArrayList<String> DataList = new ArrayList<String>();
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Controller.printToConsole("Copy Target DB:");
-            Controller.printToConsole(url);
-            Controller.printToConsole(USER);
-            Controller.printToConsole(PASS);
+            //Controller.printToConsole("Copy Target DB:");
+            //Controller.printToConsole(url);
+            //Controller.printToConsole(USER);
+            //Controller.printToConsole(PASS);
             conn = DriverManager.getConnection(url, USER, PASS);
-            Controller.printToConsole("Connected");
+            //Controller.printToConsole("Connected");
             stmt = conn.createStatement();
             stmt.execute("TRUNCATE TABLE TABLETARGET");
             stmt.execute("TRUNCATE TABLE ATTRIBUTETARGET");
@@ -76,7 +77,7 @@ public class FetchTaableResource {
                     ResultSet key = pS.getGeneratedKeys();
                     key.next();
                     int tabId = key.getInt(1);
-                    Controller.printToConsole("TAB_ID: " + tabId);
+                    //Controller.printToConsole("TAB_ID: " + tabId);
                     for (Column col : table.getAttributes()){
                         PreparedStatement colStatement = conn.prepareStatement("INSERT INTO ATTRIBUTETARGET(NAAM, TABLETARGETID, RELATIONAL) VALUES(?, ?, ?)");
                         colStatement.setString(1, col.getName());
@@ -139,10 +140,10 @@ public class FetchTaableResource {
             driver = "mysql.jdbc.driver.OracleDriver";
         }
 
-        Controller.printToConsole("Get data from target db:");
-        Controller.printToConsole("Database url: "+ url);
-        Controller.printToConsole("User: " + usr);
-        Controller.printToConsole("Password: " + pwd);
+        //Controller.printToConsole("Get data from target db:");
+        //Controller.printToConsole("Database url: "+ url);
+       // Controller.printToConsole("User: " + usr);
+        //Controller.printToConsole("Password: " + pwd);
         Connection conn = null;
         Statement stmt = null;
         String sql = null;
@@ -182,7 +183,7 @@ public class FetchTaableResource {
                 //Controller.printToConsole("rsPrim.next() --> " +  rsPrim.next());
                 while(rsPrim.next()){
                     Column col = new Column(rsPrim.getString("COLUMN_NAME"), "PK", null);
-                    Controller.printToConsole(col.toString());
+                    //Controller.printToConsole(col.toString());
                     colsConstraints.add(col);
                 }
 
@@ -191,7 +192,7 @@ public class FetchTaableResource {
                 //Controller.printToConsole("rsForeign.next() --> " +  rsForeign.next());
                 while(rsForeign.next()){
                     Column col = new Column(rsForeign.getString(1), "FK", null);
-                    Controller.printToConsole(col.toString());
+                    //Controller.printToConsole(col.toString());
                     colsConstraints.add(col);
                 }
 
@@ -216,7 +217,7 @@ public class FetchTaableResource {
                             listofTable.get(i).addAttribute(new Column(name, null, null));
                         }
 
-                        Controller.printToConsole(listofTable.get(i).getName() + " ----> " + name);
+                        //Controller.printToConsole(listofTable.get(i).getName() + " ----> " + name);
 
 
 
@@ -259,7 +260,7 @@ public class FetchTaableResource {
             json += t.getJSON() + ",";
         }
         json += "]";
-        Controller.printToConsole(json);
+        //Controller.printToConsole(json);
         return listofTable;
     }
 
@@ -273,10 +274,10 @@ public class FetchTaableResource {
         ArrayList<String> DataList = new ArrayList<String>();
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Controller.printToConsole("Target DB:");
+            /*Controller.printToConsole("Target DB:");
             Controller.printToConsole(url);
             Controller.printToConsole(USER);
-            Controller.printToConsole(PASS);
+            Controller.printToConsole(PASS);*/
             conn = DriverManager.getConnection(url, USER, PASS);
             Controller.printToConsole("Connected");
             stmt = conn.createStatement();
